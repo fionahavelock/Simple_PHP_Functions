@@ -1,35 +1,37 @@
 <?php
-
-$number=5;//temporarily hardcoded for testing
-$userInput =5;//hard coded but should be user input - needed for output message
+/*Get number and assign to variable*/
+$Number = $_POST ['inputNumber'];
+$inputNumber = $_POST ['inputNumber'];//should be user input - needed for output message
+//Set variable called factorial to 1
 $factorial = 1;
-
-function calculateFactorial($number, $factorial, $userInput)//needed to pass variables in to function
-{
- 
-     if ( $number > 0 ) {
- 
-             while($number>1)
+//call function to calculate factorial value and pass number and factorial to function as a parameters
+    function calculateFactorial( $factorial, $inputNumber)
+    {
+        //if number greater than zero 
+        if ( $inputNumber > 0 ) {
+             //while loop to calculate facorial
+             while($inputNumber>1)
              {
-				 
-                 $factorial=$factorial*$number;
-                 
-				 echo($number . " x ");//output result on each iteration
-				 $number--;
+				 //Multiply the factorial by the user number
+                 $factorial=$factorial*$inputNumber;
+                 /*Store this number as the new factorial variable on each iteration, "x" meaning "*", the output result on each iteration*/
+				 echo($inputNumber . " x ");
+                 //Reduce (decrement) the user number by 1 on each iteration
+				 $inputNumber--;
              }
- 
-              echo ($number. " the factorial of " . $userInput ." is:  " .$factorial.".");
+              //show factorial total formatted in output example below.
+              echo ($inputNumber. " the factorial of " . $Number." is:" .$factorial.".");
 			  
  
          }
-    else if ( $number < 1 ) {
+        //else statement if the number is less than 1
+        else if ( $inputNumber < 1 ) {
  
              echo "You have not entered a positive whole number greater than 0.";
          }
  
-}
-//return factorial total to global scope
-echo "The factorial of".$userInput. "is".calculateFactorial($number, $factorial, $userInput);
-
+    }
+//Show factorial result with global scope – out with the function
+calculateFactorial( $factorial, $inputNumber);
 
 ?>
